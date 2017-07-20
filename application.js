@@ -2,6 +2,7 @@ var mbaasApi = require('fh-mbaas-api');
 var express = require('express');
 var mbaasExpress = mbaasApi.mbaasExpress();
 var cors = require('cors');
+var Keycloak = require('keycloak-connect');
 
 // list the endpoints which you want to make securable here
 var securableEndpoints;
@@ -9,8 +10,14 @@ securableEndpoints = ['/hello'];
 
 var app = express();
 
+
 // Enable CORS for all requests
 app.use(cors());
+
+
+
+
+ 
 
 // Note: the order which we add middleware to Express here is important!
 app.use('/sys', mbaasExpress.sys(securableEndpoints));
@@ -37,7 +44,17 @@ app.use(express.static(__dirname + '/public'));
 // Note: important that this is added just before your own Routes
 app.use(mbaasExpress.fhmiddleware());
 
-app.use('/hello', require('./lib/hello.js')());
+var keycloak = new Keycloak({
+    store: ""
+  });
+
+  app.use(keycloak.middleware());
+
+//only authenticated users will able to access  "hello" route
+
+app.use('/hello',keycloak.protect(),require('./lib/hello.js')());
+
+
 
 // Important that this is last!
 app.use(mbaasExpress.errorHandler());

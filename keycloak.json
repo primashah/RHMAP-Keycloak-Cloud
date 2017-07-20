@@ -1,0 +1,7 @@
+{
+  "realm": "SSO_POC",
+  "bearer-only": true,
+  "auth-server-url": "https://keycloak-osdprim.rhcloud.com/auth",
+  "ssl-required": "none",
+  "resource": "RHMAP Cloud App"
+}

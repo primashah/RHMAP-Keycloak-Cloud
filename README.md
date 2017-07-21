@@ -1,7 +1,6 @@
-# FeedHenry Hello World MBaaS Server
-[![Dependency Status](https://img.shields.io/david/feedhenry-templates/helloworld-cloud.svg?style=flat-square)](https://david-dm.org/feedhenry-templates/helloworld-cloud)
-
-This is a blank 'hello world' FeedHenry MBaaS. Use it as a starting point for building your APIs. 
+# RHMAP Keycloak Cloud App 
+A demo app on how to secure endpoints using Keycloak for authenticaton and authorization.
+The hello world API uses Keycloak for Authentication and Authorization
 
 # Group Hello World API
 
@@ -24,3 +23,14 @@ This is a blank 'hello world' FeedHenry MBaaS. Use it as a starting point for bu
             {
               "msg": "Hello world"
             }
+
+# Run app locally:
+* Download the code
+* Run npm install
+* Run grunt serve
+
+
+
+
+
+
